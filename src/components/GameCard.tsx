@@ -9,10 +9,10 @@ interface Props{
 const GameCard = ( { game } : Props ) => {
     return (
     <>
-    <Card   height='300px' borderRadius='10px' overflow='hidden'>
+    <Card   height='350px' borderRadius='10px' overflow='hidden'>
     <Image src={game.background_image} />
     <CardBody>
-      <Box marginBottom='10px'> 
+      <Box marginBottom='20px'> 
             <PlatformIconsList platforms = {game.parent_platforms.map(p=>p.platform)}/>
       </Box>
     <Heading as='h4' size='md' noOfLines={1}>{ game.name }</Heading>
