@@ -1,5 +1,4 @@
-import { AxiosRequestConfig, CanceledError } from 'axios'
-import { Genre } from './useGenres'
+import { GameQuery } from "../App"
 import useData from './useData'
 
 export interface Platform{
@@ -14,14 +13,16 @@ export interface Game{
     parent_platforms : {platform : Platform}[]
 }
 
-const useGames = (selectedGenre : Genre | null , selectedPlatform : Platform | null ) => {
+const useGames = (gameQuery : GameQuery) => {
     const { data , error , isLoading } = useData<Game>('/games',{
         params:{
-            genres : selectedGenre?.id,
-            platforms : selectedPlatform?.id
+            genres : gameQuery.genre?.id,
+            platforms : gameQuery.platform?.id,
+            ordering : gameQuery.sortOrder,
+            search : gameQuery.searchText
         }
     },
-    [selectedGenre?.id , selectedPlatform?.id]
+    [gameQuery]
     );
     return  { data , error , isLoading }
 }
