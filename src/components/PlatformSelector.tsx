@@ -1,8 +1,7 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { FaChevronDown } from "react-icons/fa";
 import usePlatforms from '../hooks/usePlatforms';
-import { Genre } from '../hooks/useGenres';
-import { Platform } from '../hooks/useGames';
+import { Platform } from '../hooks/usePlatforms';
 
 interface Props{
     selectedPlatform : Platform | null,
@@ -20,7 +19,7 @@ const PlatformSelector = ({selectedPlatform , onSelectedPlatform} : Props) => {
     {selectedPlatform?selectedPlatform.name:'Platforms'}
     </MenuButton>
     <MenuList>
-        {data.map(platform=><MenuItem onClick={()=>onSelectedPlatform(platform)}
+        {data?.results.map(platform=><MenuItem onClick={()=>onSelectedPlatform(platform)}
         key={platform.id} >{platform.name}</MenuItem>)}
     </MenuList>
 </Menu>
