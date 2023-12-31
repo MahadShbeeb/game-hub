@@ -1,13 +1,13 @@
 import { GridItem, Grid, Show , Flex, Box } from '@chakra-ui/react'
-import NavBar from './components/NavBar'
-import GameGrid from './components/GameGrid'
-import GenreList from './components/GenreList'
-import { useState } from 'react'
-import { Genre } from './hooks/useGenres'
-import PlatformSelector from './components/PlatformSelector'
-import SortingSelector from './components/SortingSelector'
-import { Platform } from './hooks/useGames'
-import GameHeading from './components/GameHeading'
+import  { useState } from 'react'
+import { Genre } from '../entites/Genre'
+import { Platform } from '../entites/Platform'
+import GenreList from '../components/GenreList'
+import GameHeading from '../components/GameHeading'
+import PlatformSelector from '../components/PlatformSelector'
+import SortingSelector from '../components/SortingSelector'
+import GameGrid from '../components/GameGrid'
+
 
 export interface GameQuery{
   genre : Genre | null ,
@@ -15,19 +15,15 @@ export interface GameQuery{
   sortOrder : string,
   searchText : string
 }
-
-function App() {
-  const [gameQuery,setGameQuery]=useState<GameQuery>({} as GameQuery)
-  return (
-<>
-  <Grid templateAreas={{
-    base:`"nav" "main"` ,
-    lg:`"nav nav " "aside main"`
+const HomePage = () => {
+    const [gameQuery,setGameQuery]=useState<GameQuery>({} as GameQuery)
+    return (
+    <Grid templateAreas={{
+    base:`"main"` ,
+    lg:`"aside main"`
 
   }} >
-  <GridItem area='nav' >
-    <NavBar onSearch={(searchText)=>setGameQuery({...gameQuery,searchText})} /> 
-  </GridItem>
+
   <Show above="lg">  
 
   <GridItem area='aside'>
@@ -50,8 +46,7 @@ function App() {
   </GridItem>
 
 </Grid>
-</>
   )
 }
 
-export default App
+export default HomePage

@@ -1,4 +1,5 @@
-import useGenres, { Genre }  from "../hooks/useGenres"
+import useGenres  from "../hooks/useGenres"
+import { Genre } from '../entites/Genre'
 import { ListItem , List , HStack , Image , Button } from '@chakra-ui/react'
 import GenreListSkeleton from './GenreListSkeleton'
 

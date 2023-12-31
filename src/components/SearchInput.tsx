@@ -1,6 +1,7 @@
 import { Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react'
 import { useRef } from 'react';
 import { CiSearch } from "react-icons/ci";
+import { useNavigate } from 'react-router-dom';
 
 interface Props{
     onSearch:(searchText:string)=>void
@@ -8,11 +9,13 @@ interface Props{
 
 const SearchInput = ({onSearch} : Props) => {
     const ref = useRef<HTMLInputElement>(null)
+    const navigate = useNavigate()
     return (
     <>
 <form style={{ width : '100%' }} onSubmit={(event)=>{
 event.preventDefault();
-if(ref.current) onSearch(ref.current.value)
+if(ref.current) {onSearch(ref.current.value)
+navigate('/')}
 
 }}>
     <InputGroup>

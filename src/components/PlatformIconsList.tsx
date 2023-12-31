@@ -2,7 +2,7 @@ import { FaWindows , FaXbox , FaPlaystation , FaApple , FaLinux ,FaAndroid } fro
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import {  Platform } from '../hooks/usePlatforms'
+import { Platform } from '../entites/Platform';
 import { HStack, Icon } from '@chakra-ui/react'
 import { IconType } from 'react-icons';
 
