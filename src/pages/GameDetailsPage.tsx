@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom'
 import useGame from '../hooks/useGame'
-import { Box, Image, Heading, SimpleGrid, Spinner } from '@chakra-ui/react'
+import { Box, Image, Heading, SimpleGrid, Spinner, GridItem } from '@chakra-ui/react'
 import ExpandableText from '../components/ExpandableText'
-import DefinitionItem from '../components/DefinitionItem'
 import { GameAttributes } from '../components/GameAttributes'
+import GameTrailer from '../components/GameTrailer'
+import GameScreenshots from '../components/GameScreenShots'
 
 const GameDetailsPage = () => {
     const {slug} = useParams()
@@ -14,14 +15,15 @@ const GameDetailsPage = () => {
 
     return (
         <SimpleGrid columns={{base : 1,md:2}}>
-            <Box>
+            <GridItem>
                 <Heading>{data.name}</Heading>  
                 <ExpandableText >{data.description_raw}</ExpandableText>
                 <GameAttributes game={data}></GameAttributes>
-            </Box>
-            <Box boxSize='lg' margin='40px' >
-                <Image src={data?.background_image}  />
-            </Box>
+            </GridItem>
+            <GridItem>
+                <GameTrailer gameId={data.id} />
+                <GameScreenshots gameId={data.id} />
+            </GridItem>
             </SimpleGrid>
     )
 }

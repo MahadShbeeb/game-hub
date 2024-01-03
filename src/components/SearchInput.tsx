@@ -2,19 +2,17 @@ import { Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-
 import { useRef } from 'react';
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
+import useGameQueryStore from '../store';
 
-interface Props{
-    onSearch:(searchText:string)=>void
-}
-
-const SearchInput = ({onSearch} : Props) => {
+const SearchInput = () => {
+    const setSearchText = useGameQueryStore(s=>s.setSearchText)
     const ref = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()
     return (
     <>
 <form style={{ width : '100%' }} onSubmit={(event)=>{
 event.preventDefault();
-if(ref.current) {onSearch(ref.current.value)
+if(ref.current) {setSearchText(ref.current.value)
 navigate('/')}
 
 }}>

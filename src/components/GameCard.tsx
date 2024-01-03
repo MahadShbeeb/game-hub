@@ -1,5 +1,5 @@
 import { Box, Card , CardBody , Heading , Image , Text } from '@chakra-ui/react'
-import { Game } from "../entites/Game"
+import { Game } from "../entities/Game"
 import PlatformIconsList from './PlatformIconsList'
 import { Link } from 'react-router-dom'
 
